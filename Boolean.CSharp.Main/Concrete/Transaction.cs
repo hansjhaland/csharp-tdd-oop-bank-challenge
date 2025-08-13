@@ -12,6 +12,7 @@ namespace Boolean.CSharp.Main.Concrete
         private TransactionType _type;
         private decimal _amount; // Assume absolute value
         private decimal _resultingBalance;
+        private DateTime _date = DateTime.Now;
 
         public Transaction(decimal amount, decimal currentBalance)
         {
@@ -26,5 +27,6 @@ namespace Boolean.CSharp.Main.Concrete
         {
             get { return _resultingBalance; }
         }
+        public DateTime Date { get { return _date; }
     }
 }
