@@ -28,6 +28,16 @@ namespace Boolean.CSharp.Main.Abstract
             return _balance;
         }
 
+        public decimal CalculateBalance()
+        {
+            decimal balance = 0;
+            foreach (Transaction transaction in _transactions) 
+            {
+                balance += transaction.Type == TransactionType.Credit ? transaction.Amount : transaction.Amount * -1;
+            }
+            return balance;
+        }
+
         public Guid Id { get; set; }
         public Guid AccountNumber { get; set; } = Guid.NewGuid();
         public Branch Branch { get { return _branch; } }

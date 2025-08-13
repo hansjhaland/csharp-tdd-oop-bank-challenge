@@ -1,4 +1,6 @@
 ﻿using Boolean.CSharp.Main;
+using Boolean.CSharp.Main.Concrete.Accounts;
+using Boolean.CSharp.Main.Enums;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,18 +13,26 @@ namespace Boolean.CSharp.Test
     [TestFixture]
     public class ExtensionTests
     {
-        private Extension _extension;
-        public ExtensionTests()
-        {
-            _extension = new Extension();
-        }
         [Test]
-        private void TestQuestion1()
+        public void CalculateBalanceFromTransactionHistoryTest()
         {
+            decimal deposit1 = 1000;
+            decimal deposit2 = 500;
+            decimal withdraw1 = -1000;
 
+            CurrentAccount currentAccount = new CurrentAccount(Branch.Oslo);
+            currentAccount.AddTransaction(deposit1);
+            currentAccount.AddTransaction(deposit2);
+            currentAccount.AddTransaction(withdraw1);
+
+            decimal expectedBalance = 500;
+            decimal calculatedBalance = currentAccount.CalculateBalance();
+
+            Assert.That(calculatedBalance, Is.EqualTo(expectedBalance));
+            Assert.That(calculatedBalance, Is.EqualTo(currentAccount.Balance));
         }
         [Test]
-        private void TestQuestion2()
+        public void TestQuestion2()
         {
 
         }
