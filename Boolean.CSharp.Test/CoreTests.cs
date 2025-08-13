@@ -62,5 +62,20 @@ namespace Boolean.CSharp.Test
             Assert.That(resultingWithdrawBalance, Is.EqualTo(depositAmount + withdrawAmount));
         }
 
+        [Test]
+        public void GenerateBankStatementTest()
+        {
+            CurrentAccount currentAccount = new CurrentAccount(Branch.Oslo);
+            currentAccount.AddTransaction(1000);
+            currentAccount.AddTransaction(2000);
+            currentAccount.AddTransaction(-500);
+
+            string bankStatement = currentAccount.GenerateBankStatement();
+
+            Console.Write(bankStatement);
+
+            Assert.That(bankStatement, Is.Not.Empty);
+        }
+
     }
 }

@@ -59,5 +59,23 @@ namespace Boolean.CSharp.Main.Concrete.Accounts
             return true;
 
         }
+
+        public string GenerateBankStatement()
+        {
+            StringBuilder bankStatementBuilder = new StringBuilder();
+            string header = $"{"date", -19} | {"credit", -10} | {"debit", -10} | {"balance", -10} ";
+            bankStatementBuilder.AppendLine(header);
+            List<Transaction> transactionsDescending = _transactions.OrderByDescending(t => t.Date).ToList();
+            foreach (Transaction transaction in transactionsDescending) 
+            { 
+                DateTime date = transaction.Date;
+                string credit = transaction.Type == TransactionType.Credit ? transaction.Amount.ToString() : "";
+                string debit = transaction.Type == TransactionType.Debit ? transaction.Amount.ToString() : "";
+                string balance = transaction.ResultingBalance.ToString();
+;               string row = $"{date, -10} | {credit, -10} | {debit, -10} | {balance, -10}";
+                bankStatementBuilder.AppendLine(row);
+            }
+            return bankStatementBuilder.ToString();
+        }
     }
 }
