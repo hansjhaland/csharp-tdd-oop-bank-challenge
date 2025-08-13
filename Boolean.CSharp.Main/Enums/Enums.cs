@@ -13,7 +13,7 @@ namespace Boolean.CSharp.Main.Enums
         Trondheim
     }
 
-    public enum Status
+    public enum OverdraftStatus
     {
         Pending,
         Approved,

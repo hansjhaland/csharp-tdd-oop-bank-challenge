@@ -11,8 +11,8 @@ namespace Boolean.CSharp.Main.Abstract
     public abstract class BankAccount
     {
 
-        private decimal _balance = 0;
-        private List<Transaction> _transactions = new List<Transaction>();
+        private protected decimal _balance = 0;
+        private protected List<Transaction> _transactions = new List<Transaction>();
         private Branch _branch;
 
         protected BankAccount(Branch branch)
@@ -20,8 +20,12 @@ namespace Boolean.CSharp.Main.Abstract
             _branch = branch;
         }
 
-        public decimal AddTransaction(decimal amount)
+        public virtual decimal AddTransaction(decimal amount)
         {
+            if (_balance - amount < 0) 
+            {
+                return -1;
+            }
             Transaction transaction = new Transaction(amount, _balance);
             _transactions.Add(transaction);
             _balance += amount; 
