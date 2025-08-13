@@ -22,7 +22,10 @@ namespace Boolean.CSharp.Main.Abstract
 
         public decimal AddTransaction(decimal amount)
         {
-            throw new NotImplementedException();
+            Transaction transaction = new Transaction(amount, _balance);
+            _transactions.Add(transaction);
+            _balance += amount; 
+            return _balance;
         }
 
         public Guid Id { get; set; }

@@ -47,5 +47,20 @@ namespace Boolean.CSharp.Test
             Assert.That(transactionCredit.Type, Is.EqualTo(TransactionType.Credit));
         }
 
+        [Test]
+        public void AddTransactionToAccountTest()
+        {
+            decimal depositAmount = 500;
+            decimal withdrawAmount = -100;
+
+            CurrentAccount currentAccount = new CurrentAccount(Branch.Oslo);
+            decimal resultingDepositBalance = currentAccount.AddTransaction(depositAmount);
+            decimal resultingWithdrawBalance = currentAccount.AddTransaction(withdrawAmount);
+
+            Assert.That(currentAccount.Balance, Is.EqualTo(depositAmount + withdrawAmount));
+            Assert.That(resultingDepositBalance, Is.EqualTo(depositAmount));
+            Assert.That(resultingWithdrawBalance, Is.EqualTo(depositAmount + withdrawAmount));
+        }
+
     }
 }
