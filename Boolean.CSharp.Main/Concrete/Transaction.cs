@@ -27,6 +27,6 @@ namespace Boolean.CSharp.Main.Concrete
         {
             get { return _resultingBalance; }
         }
-        public DateTime Date { get { return _date; }
+        public DateTime Date { get { return _date; } }
     }
 }
