@@ -35,13 +35,7 @@ namespace Boolean.CSharp.Test
         [Test]
         public void OverdraftBankAccountTest()
         {
-            // Only overdraft current account
-            // Request and process
-            // Negative from 0 balance
-            // Negative from nonzero balance
-            // Not beyond limit
-            // Not if rejected
-
+            
             // Zero balance account
             CurrentAccount currentAccount1 = new CurrentAccount(Branch.Bergen);
             // 500 balance account
